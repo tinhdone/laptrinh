@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CellTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body onload="initAdmin()">
+    <div class="admin-wrapper">
+        <aside class="admin-sidebar">
+            <div class="admin-logo"><span class="logo-text">CELL</span><span class="logo-sub">ADMIN</span></div>
+            <ul class="admin-menu">
+                <li><a href="#" class="active" onclick="switchTab('dashboard')"><i class="fa-solid fa-gauge"></i> Tổng quan</a></li>
+                <li><a href="#" onclick="switchTab('products')"><i class="fa-solid fa-box-archive"></i> Sản phẩm kho</a></li>
+                <li><a href="#" onclick="switchTab('orders')"><i class="fa-solid fa-receipt"></i> Đơn hàng</a></li>
+                <li><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Về trang chủ</a></li>
+            </ul>
+        </aside>
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <h2>Hệ Thống Quản Trị</h2>
+                <div class="admin-user-profile"><span>Xin chào, <b>Admin</b></span></div>
+            </header>
+            <div id="tab-dashboard" class="admin-tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon" style="background:#e0f2fe; color:#0284c7;"><i class="fa-solid fa-wallet"></i></div><div><span>Doanh thu</span><h3>48.590.000₫</h3></div></div>
+                    <div class="stat-card"><div class="stat-icon" style="background:#dcfce7; color:#16a34a;"><i class="fa-solid fa-bag-shopping"></i></div><div><span>Đơn hàng</span><h3>24 đơn</h3></div></div>
+                </div>
+                <div class="admin-card" style="margin-top: 25px;">
+                    <h3>Đơn hàng gần đây</h3>
+                    <table class="admin-table">
+                        <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th></tr></thead>
+                        <tbody id="adminOrdersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab-products" class="admin-tab-content">
+                <h3>Quản lý sản phẩm</h3>
+                <div class="admin-card" style="margin-top:15px;">
+                    <table class="admin-table">
+                        <thead><tr><th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Kho</th></tr></thead>
+                        <tbody>
+                            <tr><td>#SP01</td><td>ASUS ROG RTX 4070 OC</td><td>16.990.000₫</td><td>15</td></tr>
+                            <tr><td>#SP02</td><td>Intel Core i7-14700K</td><td>10.490.000₫</td><td>28</td></tr>
+                            <tr><td>#SP03</td><td>PC Gaming Apex Pro</td><td>18.290.000₫</td><td>8</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab-orders" class="admin-tab-content">
+                <h3>Toàn bộ đơn hàng hệ thống</h3>
+                <div class="admin-card" style="margin-top:15px;">
+                    <table class="admin-table">
+                        <thead><tr><th>Mã đơn</th><th>Khách</th><th>SĐT</th><th>Địa chỉ</th><th>Tổng tiền</th><th>Trạng thái</th></tr></thead>
+                        <tbody id="adminOrdersTableFull"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

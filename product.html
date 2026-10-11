@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - CellTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <span>🔥 Cam kết chính hãng 100% - Bảo hành siêu tốc 1 đổi 1</span>
+            <div class="top-bar-right">
+                <a href="admin.html" class="admin-link"><i class="fa-solid fa-user-shield"></i> Quản trị Admin</a>
+                <span>📞 Hotline: 1800.2097</span>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><span class="logo-text">CELL</span><span class="logo-sub">TECH</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="header-actions">
+                <a href="cart.html" class="action-item cart-action">
+                    <div class="cart-icon-wrap"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge" id="cartCount">0</span></div>
+                    <span>Giỏ hàng</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="container main-content">
+        <div class="breadcrumb">
+            <a href="index.html">Trang chủ</a> > <a href="index.html">Linh kiện PC</a> > <span id="breadcrumbName">Card Màn Hình ASUS ROG Strix GeForce RTX 4070 OC</span>
+        </div>
+        <div class="product-detail-container">
+            <div class="product-gallery">
+                <div class="main-img-box"><img id="pMainImg" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Product"></div>
+                <div class="thumb-list">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=200&q=80" onclick="changeImg(this)" alt="thumb">
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=200&q=80" onclick="changeImg(this)" alt="thumb">
+                    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=200&q=80" onclick="changeImg(this)" alt="thumb">
+                </div>
+            </div>
+            <div class="product-info-panel">
+                <h1 id="pTitle" class="product-title-detail">Card Màn Hình ASUS ROG Strix GeForce RTX 4070 OC 12GB GDDR6X</h1>
+                <div class="rating-star">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <span>(48 Đánh giá) | 1,250 Đã bán</span>
+                </div>
+                <div class="price-box-detail">
+                    <span id="pPrice" class="price-current">16.990.000₫</span>
+                    <span class="price-old">20.500.000₫</span>
+                    <span class="badge-saving">Tiết kiệm 3.510.000₫</span>
+                </div>
+                <div class="promo-box">
+                    <div class="promo-header"><i class="fa-solid fa-gift"></i> Ưu đãi đặc biệt</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Giảm thêm 500.000đ khi mua kèm Mainboard & CPU</li>
+                        <li><i class="fa-solid fa-check"></i> Tặng áo thun ROG Gaming cao cấp</li>
+                        <li><i class="fa-solid fa-check"></i> Trả góp 0% qua thẻ tín dụng mượt mà</li>
+                    </ul>
+                </div>
+                <div class="purchase-actions">
+                    <div class="quantity-selector">
+                        <button onclick="adjustQty(-1)">-</button>
+                        <input type="text" id="qtyInput" value="1" readonly>
+                        <button onclick="adjustQty(1)">+</button>
+                    </div>
+                    <button class="btn-add-cart-large" onclick="addCurrentProductToCart()">THÊM VÀO GIỎ HÀNG</button>
+                    <button class="btn-buy-now" onclick="buyNow()">MUA NGAY (Giao tận nơi)</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container footer-bottom"><p>© 2026 CellTech Vietnam. E-commerce Core Module.</p></div>
+    </footer>
+    <div id="toast" class="toast">Đã thêm sản phẩm vào giỏ hàng thành công!</div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - CellTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body onload="renderCheckout()">
+    <div class="top-bar">
+        <div class="container">
+            <span>🔒 Thanh toán bảo mật SSL</span>
+            <a href="admin.html" class="admin-link"><i class="fa-solid fa-user-shield"></i> Quản trị Admin</a>
+        </div>
+    </div>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><span class="logo-text">CELL</span><span class="logo-sub">TECH</span></a>
+            <div class="header-actions"><a href="cart.html" class="action-item"><i class="fa-solid fa-arrow-left"></i> Quay lại giỏ hàng</a></div>
+        </div>
+    </header>
+    <main class="container main-content">
+        <h1 class="section-heading" style="margin-top: 20px;">THANH TOÁN ĐƠN HÀNG</h1>
+        <div class="checkout-layout">
+            <div class="checkout-form-box">
+                <h3>1. Thông tin người nhận hàng</h3>
+                <form id="orderForm" onsubmit="submitOrder(event)">
+                    <div class="form-group"><label>Họ và tên</label><input type="text" id="cusName" required placeholder="Nguyễn Văn A"></div>
+                    <div class="form-group"><label>Số điện thoại</label><input type="tel" id="cusPhone" required placeholder="0912345678"></div>
+                    <div class="form-group"><label>Địa chỉ</label><input type="text" id="cusAddress" required placeholder="Số nhà, đường, quận, TP"></div>
+                    
+                    <h3 style="margin-top: 25px;">2. Phương thức thanh toán</h3>
+                    <div class="payment-methods">
+                        <label class="pay-method-item" onclick="toggleQrBox(false)">
+                            <input type="radio" name="payment" value="COD" checked>
+                            <span>Thanh toán khi nhận hàng (COD)</span>
+                        </label>
+                        <label class="pay-method-item" onclick="toggleQrBox(true)">
+                            <input type="radio" name="payment" value="Banking">
+                            <span>Chuyển khoản ngân hàng qua mã QR (VietQR)</span>
+                        </label>
+                    </div>
+
+                    <!-- QR Payment Info Section -->
+                    <div id="qrPaymentBox" class="qr-payment-container" style="display: none; margin-top: 20px; padding: 20px; border: 2px dashed #d70018; border-radius: 10px; background: #fff5f5; text-align: center;">
+                        <h4 style="color: #d70018; margin-bottom: 10px;"><i class="fa-solid fa-qrcode"></i> QUÉT MÃ QR ĐỂ THANH TOÁN</h4>
+                        <p style="font-size: 13px; color: #555; margin-bottom: 15px;">Sử dụng App Ngân hàng hoặc Ví điện tử để quét mã QR bên dưới</p>
+                        
+                        <div style="background: #fff; display: inline-block; padding: 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <!-- Generated VietQR dynamic link with user's bank account details -->
+                            <img id="vietQrImg" src="https://img.vietqr.io/image/Viettinbank-002603939-compact2.png?accountName=DO%20PHAM%20TRUNG%20TINH" alt="Mã QR Thanh Toán" style="max-width: 260px; width: 100%; border-radius: 8px;">
+                        </div>
+
+                        <div style="margin-top: 15px; text-align: left; font-size: 13px; line-height: 1.8; background: #fff; padding: 12px 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                            <div><b>Chủ tài khoản:</b> <span style="color: #d70018; font-weight: bold;">DO PHAM TRUNG TINH</span></div>
+                            <div><b>Số tài khoản:</b> <span style="font-size: 15px; font-weight: bold; letter-spacing: 1px;">002603939</span></div>
+                            <div><b>Nội dung chuyển khoản:</b> <span id="transferNote" style="font-weight: bold; color: #2563eb;">CELLTECH [SĐT của bạn]</span></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-place-order">ĐẶT HÀNG NGAY</button>
+                </form>
+            </div>
+            <div class="checkout-summary-box">
+                <h3>Đơn hàng</h3>
+                <div id="checkoutItemsList"></div>
+                <hr style="margin: 15px 0;">
+                <div class="summary-row total-row"><span>Tổng cộng:</span><strong id="checkoutTotal" style="color: var(--primary-red); font-size: 18px;">0₫</strong></div>
+            </div>
+        </div>
+    </main>
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content">
+            <i class="fa-solid fa-circle-check" style="font-size: 50px; color: #10b981; margin-bottom: 15px;"></i>
+            <h2>Đặt hàng thành công!</h2>
+            <p>Mã đơn hàng: <b id="orderCode">#CT892026</b></p>
+            <p style="font-size: 13px; color: #666; margin-top: 8px;">Cảm ơn bạn đã mua hàng tại CellTech. Chúng tôi sẽ liên hệ xác nhận đơn hàng sớm nhất!</p>
+            <a href="index.html" class="btn-buy" style="display:inline-block; padding: 10px 20px; margin-top:15px;">Về trang chủ</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function toggleQrBox(show) {
+            document.getElementById('qrPaymentBox').style.display = show ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

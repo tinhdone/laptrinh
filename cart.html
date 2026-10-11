@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng - CellTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body onload="renderCart()">
+    <div class="top-bar">
+        <div class="container">
+            <span>🛒 Giỏ hàng của bạn</span>
+            <a href="admin.html" class="admin-link"><i class="fa-solid fa-user-shield"></i> Quản trị Admin</a>
+        </div>
+    </div>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo"><span class="logo-text">CELL</span><span class="logo-sub">TECH</span></a>
+            <div class="header-actions">
+                <a href="index.html" class="action-item"><i class="fa-solid fa-house"></i> Tiếp tục mua sắm</a>
+            </div>
+        </div>
+    </header>
+    <main class="container main-content">
+        <h1 class="section-heading" style="margin-top: 20px;">GIỎ HÀNG CỦA BẠN (<span id="cartItemCount">0</span> sản phẩm)</h1>
+        <div class="cart-layout">
+            <div class="cart-items-list" id="cartItemsContainer"></div>
+            <div class="cart-summary-card">
+                <h3>Cộng giỏ hàng</h3>
+                <div class="summary-row"><span>Tạm tính:</span><strong id="subtotalPrice">0₫</strong></div>
+                <div class="summary-row"><span>Phí vận chuyển:</span><strong>Miễn phí</strong></div>
+                <hr style="margin: 15px 0; border:0; border-top:1px solid #e5e7eb;">
+                <div class="summary-row total-row"><span>Tổng tiền:</span><strong id="totalPrice" style="color: var(--primary-red); font-size: 18px;">0₫</strong></div>
+                <a href="checkout.html" class="btn-checkout-proceed">TIẾN HÀNH THANH TOÁN</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container footer-bottom"><p>© 2026 CellTech Vietnam. Cart Module.</p></div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
